@@ -63,6 +63,6 @@ jobs:
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/phpSansBdd'
         env:
-          deploy_url: ${{ secrets.RENDER }}
+          deploy_url: ${{ secrets.PHPSANSBDD }}
         run: |
           curl "$deploy_url"
