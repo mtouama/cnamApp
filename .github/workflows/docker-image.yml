@@ -4,8 +4,7 @@ name: Build and publish
 on:
   push:
     branches:
-      - phpSansBdd
-
+      - phpSansBDD
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: emmamau/cnamAppPhpSansBdd
