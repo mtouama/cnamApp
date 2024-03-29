@@ -61,7 +61,7 @@ jobs:
 
       - name: Deploy on render.com
         # Only run this step if the branch is main
-        if: github.ref == 'refs/heads/phpSansBdd'
+        if: github.ref == 'refs/heads/phpSansBDD'
         env:
           deploy_url: ${{ secrets.PHPSANSBDD }}
         run: |
