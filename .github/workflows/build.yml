@@ -63,4 +63,4 @@ jobs:
         env:
           deploy_url: ${{ secrets.NODEJS }}
         run: |
-          curl "$deploy_url"
+         # curl "$deploy_url"
