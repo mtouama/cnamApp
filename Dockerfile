@@ -29,10 +29,11 @@ RUN rm -rf /var/lib/apt/lists/* \
  && mkdir ./src \
  && composer install --prefer-dist \
  && composer dump-autoload --optimize \
- && composer update \
- && php vendor/bin/doctrine orm:convert-mapping --namespace="" --force --from-database yml ./config/yaml \
- && php vendor/bin/doctrine orm:generate-entities --generate-annotations=false --update-entities=true --generate-methods=false ./src \
  && composer update
+ 
+RUN php vendor/bin/doctrine orm:convert-mapping --namespace="" --force --from-database yml ./config/yaml 
+RUN php vendor/bin/doctrine orm:generate-entities --generate-annotations=false --update-entities=true --generate-methods=false ./src 
+RUN composer update
 
 # Exposer le port 80 pour permettre les connexions entrantes
 EXPOSE 80
