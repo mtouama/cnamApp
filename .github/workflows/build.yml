@@ -7,7 +7,7 @@ on:
       - phpAvecBDD
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: emmamau/cnamAppPhpAvecBdd
+  IMAGE_NAME: emmamau/phpAvecBDD
 
 jobs:
   build-and-publish:
@@ -63,6 +63,6 @@ jobs:
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/phpAvecBDD'
         env:
-          deploy_url: ${{ secrets.PHPAVECBDD }}
+          deploy_url: ${{ secrets.PHP }}
         run: |
           curl "$deploy_url"
