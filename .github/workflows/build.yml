@@ -7,7 +7,7 @@ on:
       - nodejsSansBDD
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: emmamau/nodejs
+  IMAGE_NAME: emmamau/nodejsSansBDD
 
 jobs:
   build-and-publish:
