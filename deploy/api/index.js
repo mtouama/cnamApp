@@ -3,7 +3,7 @@ const cors = require("cors");
 
 const app  = express ();
 
-var corsOptions = {
+const corsOptions = {
   origin: "*",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   headers: 'Content-Type, Authorization',

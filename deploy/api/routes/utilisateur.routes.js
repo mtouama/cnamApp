@@ -3,7 +3,7 @@ const { checkJwt}  = require('./jwtMiddleware');
 module.exports = app => {
     const utilisateur = require("../controllers/utilisateur.controllers.js");
   
-    var router = require("express").Router();
+    let router = require("express").Router();
   
 
     // login utilisateur
