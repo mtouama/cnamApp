@@ -15,7 +15,8 @@
 
     },
     "autoload": {
-        "psr-0": {"": "/var/www/html/src"}
+        "classmap": ["/var/www/html/src/"]
+		
 
     }
 }
