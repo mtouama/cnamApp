@@ -90,7 +90,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 		$err=true;
 	    }
 	    if (!$err) {
-		$userRepository = $entityManager->getRepository('User');
+		$userRepository = $entityManager->getRepository('Utilisateurs');
 		$user = $userRepository->findOneBy(array('login' => $login, 'pass' => $pass));
 		if ($user and $login == $user->getLogin() and $pass == $user->getPass()) {
 		    $response = addHeaders ($response);
