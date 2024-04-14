@@ -63,6 +63,6 @@ jobs:
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/phpAvecBDD'
         env:
-          deploy_url: ${{ secrets.PHP }}
+          deploy_url: ${{ secrets.PHP_BDD }}
         run: |
           curl "$deploy_url"
