@@ -123,7 +123,7 @@ $app->get('/api/user', function (Request $request, Response $response, $args) {
 });
 
 // APi d'authentification gÃ©nÃ©rant un JWT
-$app->post('/api/login', function (Request $request, Response $response, $args) {   
+$app->post('/api/utilisateur/login', function (Request $request, Response $response, $args) {   
     global $entityManager;
     $err=false;
     $body = $request->getParsedBody();
@@ -164,7 +164,7 @@ $options = [
     "algorithm" => ["HS256"],
     "secret" => JWT_SECRET,
     "path" => ["/api"],
-    "ignore" => ["/api/hello","/api/login"],
+    "ignore" => ["/api/hello","/api/utilisateur/login"],
     "error" => function ($response, $arguments) {
         $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
         $response = $response->withStatus(401);
