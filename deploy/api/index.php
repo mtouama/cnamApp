@@ -140,7 +140,7 @@ $app->post('/api/utilisateur/login', function (Request $request, Response $respo
 	
 	
     if (!$err) {
-        $utilisateurRepository = $entityManager->getRepository('Utilisateurs');
+        $utilisateurRepository = $entityManager->getRepository('User');
         $utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'pass' => $pass));
         if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPass()) {
             $response = addHeaders ($response);
@@ -148,10 +148,10 @@ $app->post('/api/utilisateur/login', function (Request $request, Response $respo
             $data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
             $response->getBody()->write(json_encode($data));
         } else {          
-            $response = $response->withStatus(404);
+            $response = $response->withStatus(401);
         }
     } else {
-        $response = $response->withStatus(403);
+        $response = $response->withStatus(401);
     }
 
     return $response;
