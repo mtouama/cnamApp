@@ -91,7 +91,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    }
 	    if (!$err) {
 		$userRepository = $entityManager->getRepository('Utilisateurs');
-		$user = $userRepository->findByOneQuoted(array('login' => $login, 'pass' => $pass));
+		$user = $userRepository->findByOne(array('login' => $login, 'pass' => $pass));
 		if ($user and $login == $user->getLogin() and $pass == $user->getPass()) {
 		    $response = addHeaders ($response);
 		    $response = createJwT ($response);
