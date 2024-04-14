@@ -145,10 +145,10 @@ $app->post('/api/utilisateur/login', function (Request $request, Response $respo
             $data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
             $response->getBody()->write(json_encode($data));
         } else {          
-            $response = $response->withStatus(401);
+            $response = $response->withStatus(404);
         }
     } else {
-        $response = $response->withStatus(401);
+        $response = $response->withStatus(403);
     }
 
     return $response;
