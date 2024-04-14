@@ -36,7 +36,7 @@ RUN php vendor/bin/doctrine orm:generate-entities --generate-annotations=false -
 RUN composer dump-autoload -v
 
 RUN ls ./src
-RUN cat ./vendor/autoload.php
+RUN cat ./vendor/composer/autoload_real.php
 RUN ls
 
 # Exposer le port 80 pour permettre les connexions entrantes
