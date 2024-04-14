@@ -33,11 +33,7 @@ RUN rm -rf /var/lib/apt/lists/* \
  
 RUN php vendor/bin/doctrine orm:convert-mapping --namespace="" --force --from-database yml ./config/yaml 
 RUN php vendor/bin/doctrine orm:generate-entities --generate-annotations=false --update-entities=true --generate-methods=false ./src 
-RUN composer dump-autoload -v
-
-RUN ls ./src
-RUN cat ./vendor/composer/autoload_static.php
-RUN ls
+RUN composer dump-autoload  --optimize -v
 
 # Exposer le port 80 pour permettre les connexions entrantes
 EXPOSE 80
