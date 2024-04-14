@@ -141,8 +141,8 @@ $app->post('/api/utilisateur/login', function (Request $request, Response $respo
 	
     if (!$err) {
         $utilisateurRepository = $entityManager->getRepository('Utilisateurs');
-        $utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'password' => $pass));
-        if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPassword()) {
+        $utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'pass' => $pass));
+        if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPass()) {
             $response = addHeaders ($response);
             $response = createJwT ($response);
             $data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
