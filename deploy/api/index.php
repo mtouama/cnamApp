@@ -140,7 +140,7 @@ $app->post('/api/utilisateur/login', function (Request $request, Response $respo
 	
 	
     if (!$err) {
-        $utilisateurRepository = $entityManager->getRepository('Utilisateur');
+        $utilisateurRepository = $entityManager->getRepository('Utilisateurs');
         $utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'password' => $pass));
         if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPassword()) {
             $response = addHeaders ($response);
