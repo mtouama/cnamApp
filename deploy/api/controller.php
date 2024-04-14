@@ -61,10 +61,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    $payload = getJWTToken($request);
 	    $login  = $payload->userid;
 	    
-	    $utilisateurRepository = $entityManager->getRepository('Utilisateurs');
-	    $utilisateur = $utilisateurRepository->findOneBy(array('login' => $login));
-	    if ($utilisateur) {
-		$data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
+	    $userRepository = $entityManager->getRepository('user');
+	    $user = $userRepository->findOneBy(array('login' => $login));
+	    if ($user) {
+		$data = array('nom' => $user->getNom(), 'prenom' => $user->getPrenom());
 		$response = addHeaders ($response);
 		$response = createJwT ($response);
 		$response->getBody()->write(json_encode($data));
@@ -90,12 +90,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 		$err=true;
 	    }
 	    if (!$err) {
-		$utilisateurRepository = $entityManager->getRepository('Utilisateurs');
-		$utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'password' => $pass));
-		if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPassword()) {
+		$userRepository = $entityManager->getRepository('user');
+		$user = $userRepository->findOneBy(array('login' => $login, 'pass' => $pass));
+		if ($user and $login == $user->getLogin() and $pass == $user->getPass()) {
 		    $response = addHeaders ($response);
 		    $response = createJwT ($response);
-		    $data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
+		    $data = array('nom' => $user->getNom(), 'prenom' => $user->getPrenom());
 		    $response->getBody()->write(json_encode($data));
 		} else {          
 		    $response = $response->withStatus(403);
