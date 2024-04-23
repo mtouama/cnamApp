@@ -8,7 +8,7 @@
 	$conn = array(
 	'host' => 'dpg-cok0d7gl6cac73e70b2g-a.oregon-postgres.render.com',
 	'driver' => 'pdo_pgsql',
-	'user' =>'cnam_l5ol_usera',
+	'user' =>'cnam_l5ol_user',
 	'password' => 'VoZBXopqdGnJ5Vilgny4Jc0ANIK6XqPY',
 	'dbname' => 'cnam_l5ol',
 	'port' => '5432'
