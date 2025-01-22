@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
    id: {
         type: Sequelize.STRING,
         primaryKey:true,
-        allowNull: false
+        autoIncrement: true
       },  
     nom: {
       type: Sequelize.STRING,
@@ -20,6 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     pass: {
         type: Sequelize.STRING,
+        allowNull: false
     }
  });
 return Utilisateurs;

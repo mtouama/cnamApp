@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const Utilisateur = require('../models/utilisateurs.model.js')
+
 const { v4: uuidv4 } = require ("uuid");
 const { ACCESS_TOKEN_SECRET }  = require ("../config.js");
 
@@ -49,4 +52,48 @@ exports.login = (req, res) => {
       message: "Login ou password incorrect" 
     });
   }
+};
+
+exports.register = (req, res) => {
+
+
+  //**** */
+  const { login, nom, prenom, password } = req.body;
+
+  console.log("passwd: " + password)
+
+  // Validation des données
+  if (!login || !nom || !prenom || !password) {
+    return res.status(400).json({ message: 'Tous les champs sont requis.' });
+  }
+
+  // Vérification de l'existence d'un utilisateur avec le même login
+  Utilisateurs.findOne({ where: { login } })
+    .then(existingUser => {
+      if (existingUser) {
+        return res.status(400).json({ message: 'Ce login est déjà utilisé.' });
+      }
+
+      console.log("passwd: " + password)
+
+      
+      // Création d'un nouvel utilisateur
+      const newUser = {
+        // id: uuidv4(),
+        login: login,
+        nom: nom,
+        prenom: prenom,
+        pass: password, // Mot de passe non haché
+      };
+
+      // Sauvegarde de l'utilisateur dans la base de données
+      return Utilisateurs.create(newUser);
+    })
+    .then(user => {
+      res.status(201).json({ message: 'Utilisateur créé avec succès.', user });
+    })
+    .catch(error => {
+      console.error('Erreur lors de la création de l\'utilisateur :', error);
+      res.status(500).json({ message: 'Erreur interne du serveur.' });
+    });
 };
